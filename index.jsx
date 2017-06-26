@@ -26,7 +26,7 @@ class Template extends React.Component {
             <h1>App</h1>
             <ul>
                 <li>
-                    <Link to="/">Home</Link>
+                    <Link activeStyle={ {backgroundColor: "red"} } to="/">Home</Link>
                 </li>
                 <li>
                     <Link to="/contact">Contact</Link>
