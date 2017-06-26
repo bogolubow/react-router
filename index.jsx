@@ -2,6 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {Router, Route, Link, IndexLink, IndexRoute, hashHistory} from 'react-router';
 
+const users = [
+    {id: 1, name: "Marcin"},
+    {id: 2, name: "Marek"},
+    {id: 3, name: "Ewa"}
+]
+
 class Main extends React.Component {
     render() {
         return <h1>&lt;Main/&gt;! <Link to="/contact">go to contact</Link></h1>;
@@ -22,6 +28,10 @@ class NotFound extends React.Component {
 
 class Template extends React.Component {
     render() {
+        const usersList = this.props.route.users.map(u => {
+            return <li key={u.id}><IndexLink activeClassName="active" activeStyle={ {backgroundColor: "red"} } to={"/users/" + u.id}>{u.name}</IndexLink></li>
+        });
+
         return <div>
             <h1>App</h1>
             <ul>
@@ -33,8 +43,7 @@ class Template extends React.Component {
                 </li>
                 <li>Users!
                     <ul>
-                        <li><IndexLink activeClassName="active" activeStyle={ {backgroundColor: "red"} } to="/users/1">1</IndexLink></li>
-                        <li><IndexLink activeClassName="active" activeStyle={ {backgroundColor: "red"} } to="/users/2">2</IndexLink></li>
+                        {usersList}
                     </ul>
                 </li>
             </ul>
@@ -55,10 +64,10 @@ class UserInfo extends React.Component {
 class App extends React.Component {
     render() {
         return <Router history={hashHistory}>
-            <Route path='/' component={Template}>
+            <Route path='/' component={Template} users={this.props.users}>
                 <IndexRoute component={Main} />
                 <Route path='/contact' component={Contact} />
-                <Route path='/users/:id' component={UserInfo} />
+                <Route path='/users/:id' component={UserInfo} users={this.props.users} />} />
                 <Route path='*' component={NotFound} />
             </Route>
         </Router>;
@@ -68,7 +77,7 @@ class App extends React.Component {
 
 document.addEventListener('DOMContentLoaded', function(){
     ReactDOM.render(
-        <App/>,
+        <App users={users}/>,
         document.getElementById('app')
     );
 });
