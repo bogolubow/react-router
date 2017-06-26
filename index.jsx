@@ -26,10 +26,10 @@ class Template extends React.Component {
             <h1>App</h1>
             <ul>
                 <li>
-                    <Link activeStyle={ {backgroundColor: "red"} } to="/">Home</Link>
+                    <IndexLink activeStyle={ {backgroundColor: "red"} } to="/">Home</IndexLink>
                 </li>
                 <li>
-                    <Link  activeStyle={ {backgroundColor: "red"} } to="/contact">Contact</Link>
+                    <IndexLink  activeStyle={ {backgroundColor: "red"} } to="/contact">Contact</IndexLink>
                 </li>
             </ul>
             {this.props.children}
