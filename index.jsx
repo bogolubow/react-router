@@ -4,13 +4,13 @@ import {Router, Route, Link, IndexLink, IndexRoute, hashHistory} from 'react-rou
 
 class Main extends React.Component {
     render() {
-        return <h1>&lt;Main/&gt;!</h1>;
+        return <h1>&lt;Main/&gt;! <Link to="/contact">go to contact</Link></h1>;
     }
 }
 
 class Contact extends React.Component {
     render() {
-        return <h1>Contact us at contact@example.com</h1>;
+        return <h1>Contact us at contact@example.com <Link to="/">go to home</Link></h1>;
     }
 }
 
