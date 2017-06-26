@@ -16,7 +16,10 @@ class Contact extends React.Component {
 
 class App extends React.Component {
     render() {
-        return <Main />;
+        return <Router history={hashHistory}>
+            <Route path='/' component={Main} />
+            <Route path='/contact' component={Contact} />
+        </Router>;
     }
 }
 
