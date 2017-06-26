@@ -14,11 +14,18 @@ class Contact extends React.Component {
     }
 }
 
+class NotFound extends React.Component {
+    render() {
+        return <h1>404</h1>;
+    }
+}
+
 class App extends React.Component {
     render() {
         return <Router history={hashHistory}>
             <Route path='/' component={Main} />
             <Route path='/contact' component={Contact} />
+            <Route path='*' component={NotFound} />
         </Router>;
     }
 }
