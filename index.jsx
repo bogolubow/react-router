@@ -53,10 +53,18 @@ class Template extends React.Component {
 }
 
 class UserInfo extends React.Component {
+
     render() {
+        const user = this.props.route.users.filter(u => {
+            return u.id == this.props.params.id;
+        });
+
+        console.log(user[0]);
+
         return <h1>
             Info about User with ID:
-            {this.props.params.id}
+            {this.props.params.id}, 
+            name: {user[0].name}
         </h1>;
     }
 }
