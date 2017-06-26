@@ -5,6 +5,11 @@ module.exports = {
         path: path.resolve("dist"),
         filename: "out.js"
     },
+    devServer: {
+        inline: true,
+        contentBase: './',
+        port: 3001
+    },
     watch: true,
     module: {
         loaders: [
