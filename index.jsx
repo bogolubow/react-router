@@ -20,12 +20,31 @@ class NotFound extends React.Component {
     }
 }
 
+class Template extends React.Component {
+    render() {
+        return <div>
+            <h1>App</h1>
+            <ul>
+                <li>
+                    <Link to="/">Home</Link>
+                </li>
+                <li>
+                    <Link to="/contact">Contact</Link>
+                </li>
+            </ul>
+            {this.props.children}
+        </div>
+    }
+}
+
 class App extends React.Component {
     render() {
         return <Router history={hashHistory}>
-            <Route path='/' component={Main} />
-            <Route path='/contact' component={Contact} />
-            <Route path='*' component={NotFound} />
+            <Route path='/' component={Template}>
+                <IndexRoute component={Main} />
+                <Route path='/contact' component={Contact} />
+                <Route path='*' component={NotFound} />
+            </Route>
         </Router>;
     }
 }
