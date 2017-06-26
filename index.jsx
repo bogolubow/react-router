@@ -31,9 +31,24 @@ class Template extends React.Component {
                 <li>
                     <IndexLink activeClassName="active"  activeStyle={ {backgroundColor: "red"} } to="/contact">Contact</IndexLink>
                 </li>
+                <li>Users!
+                    <ul>
+                        <li><IndexLink activeClassName="active" activeStyle={ {backgroundColor: "red"} } to="/users/1">1</IndexLink></li>
+                        <li><IndexLink activeClassName="active" activeStyle={ {backgroundColor: "red"} } to="/users/2">2</IndexLink></li>
+                    </ul>
+                </li>
             </ul>
             {this.props.children}
         </div>
+    }
+}
+
+class UserInfo extends React.Component {
+    render() {
+        return <h1>
+            Info about User with ID:
+            {this.props.params.id}
+        </h1>;
     }
 }
 
@@ -43,6 +58,7 @@ class App extends React.Component {
             <Route path='/' component={Template}>
                 <IndexRoute component={Main} />
                 <Route path='/contact' component={Contact} />
+                <Route path='/users/:id' component={UserInfo} />
                 <Route path='*' component={NotFound} />
             </Route>
         </Router>;
